@@ -71,14 +71,9 @@ RCT_EXPORT_MODULE();
     }
 }
 
-RCT_EXPORT_METHOD(isQQInstalled:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(isQQInstalled:(RCTResponseSenderBlock)callback)
 {
-    if ([QQApiInterface isQQInstalled]) {
-        resolve(@[[NSNull null]]);
-    }
-    else {
-        reject(@"-1",INVOKE_FAILED,nil);
-    }
+    callback(@[[NSNull null], @([QQApiInterface isQQInstalled])]);
 }
 
 RCT_EXPORT_METHOD(isQQSupportApi:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
